@@ -32,6 +32,15 @@ public class MockitoService {
         Pelicula resultado = service.getPeliculaById(1);
         Assertions.assertEquals(salida, resultado);
     }
+    @DisplayName("Test getPeliculaById - Vacio")
+    @Test
+    public void testGetPeliculaByIdEmpty() throws Exception {
+        Pelicula salida = new Pelicula();
+        Mockito.when(repo.findById(Mockito.anyInt())).thenReturn(Optional.empty());
+
+        Pelicula resultado = service.getPeliculaById(15);
+        Assertions.assertEquals(salida, resultado);
+    }
 
     @DisplayName("Test createPelicula")
     @Test
